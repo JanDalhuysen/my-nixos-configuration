@@ -143,6 +143,10 @@
   distrobox
   luajit
   obs-studio
+  vlc
+  # fish
+  # zsh
+  # osu-lazer-bin
   ];
 
   fonts.packages = with pkgs; [
@@ -171,6 +175,11 @@
     };
   };
 
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -186,6 +195,10 @@
 
   virtualisation.docker.enable = true;
   virtualisation.podman.enable = true;
+
+  # services.flatpak.enable = true;
+
+  # services.teamviewer.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
