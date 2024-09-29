@@ -128,21 +128,22 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  # Do not change the order
+  #  wget
   wget
   curl
   git
-  gh
   neofetch
   fastfetch
   nerdfonts
   starship
   cascadia-code
+  gh
   vscode
   microsoft-edge
   distrobox
   luajit
   obs-studio
+  # Do not change the order of the packages
   ];
 
   fonts.packages = with pkgs; [
@@ -198,6 +199,7 @@
   virtualisation.podman.enable = true;
 
   # services.flatpak.enable = true;
+
   # services.teamviewer.enable = true;
 
   # Open ports in the firewall.
