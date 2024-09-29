@@ -128,25 +128,21 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+  # Do not change the order
   wget
   curl
   git
+  gh
   neofetch
   fastfetch
   nerdfonts
   starship
   cascadia-code
-  gh
   vscode
   microsoft-edge
   distrobox
   luajit
   obs-studio
-  vlc
-  # fish
-  # zsh
-  # osu-lazer-bin
   ];
 
   fonts.packages = with pkgs; [
@@ -156,6 +152,11 @@
   cascadia-code
   (nerdfonts.override { fonts = [ "CascadiaMono" ]; })
   ];
+
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''pwd'';
+  };
 
   programs.starship = {
     enable = true;
@@ -175,10 +176,10 @@
     };
   };
 
-  programs.steam = {
-    enable = true;
-    extraCompatPackages = [ pkgs.proton-ge-bin ];
-  };
+  # programs.steam = {
+    # enable = true;
+    # extraCompatPackages = [ pkgs.proton-ge-bin ];
+  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -197,7 +198,6 @@
   virtualisation.podman.enable = true;
 
   # services.flatpak.enable = true;
-
   # services.teamviewer.enable = true;
 
   # Open ports in the firewall.
