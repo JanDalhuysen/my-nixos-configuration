@@ -8,9 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./vm.nix
     ];
 
-      # ./vm.nix
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -147,13 +147,6 @@
   obs-studio
   emacs
   sl
-  # krita
-  # gnome.adwaita-icon-theme
-  # kdePackages.filelight
-  # blender
-  discord
-  # virt-manager
-  # virt-viewer
   ];
 
   # eed to use sudo nixos-install --option substituters https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store
