@@ -10,6 +10,8 @@
       ./hardware-configuration.nix
     ];
 
+      # ./vm.nix
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -143,8 +145,18 @@
   distrobox
   luajit
   obs-studio
-  # Do not change the order of the packages
+  emacs
+  sl
+  # krita
+  # gnome.adwaita-icon-theme
+  # kdePackages.filelight
+  # blender
+  discord
+  # virt-manager
+  # virt-viewer
   ];
+
+  # eed to use sudo nixos-install --option substituters https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store
 
   fonts.packages = with pkgs; [
   noto-fonts
@@ -177,10 +189,19 @@
     };
   };
 
-  # programs.steam = {
-    # enable = true;
-    # extraCompatPackages = [ pkgs.proton-ge-bin ];
-  # };
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
+  };
+
+  # substituters = https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org/
+
+  # nix.settings.substituters = lib.mkBefore [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
+
+  # virtualisation.virtualbox.host.enable = true;
+  # users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+
+  
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -197,10 +218,6 @@
 
   virtualisation.docker.enable = true;
   virtualisation.podman.enable = true;
-
-  # services.flatpak.enable = true;
-
-  # services.teamviewer.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
