@@ -113,7 +113,7 @@
   users.users.jan = {
     isNormalUser = true;
     description = "Jan Dalhuysen";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "openrazer" ];
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird
@@ -147,6 +147,17 @@
   obs-studio
   emacs
   sl
+  cowsay
+  fortune
+  discord
+  blender
+  vlc
+  cemu
+  dolphin-emu
+  desmume
+  openrazer-daemon
+  razergenie
+  ryujinx
   ];
 
   # eed to use sudo nixos-install --option substituters https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store
@@ -182,6 +193,8 @@
     };
   };
 
+  hardware.openrazer.enable = true;
+
   programs.steam = {
     enable = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
@@ -211,6 +224,11 @@
 
   virtualisation.docker.enable = true;
   virtualisation.podman.enable = true;
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "jan" ];
+
+  services.flatpak.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
