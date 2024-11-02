@@ -158,6 +158,16 @@
   openrazer-daemon
   razergenie
   ryujinx
+  noto-fonts-cjk-sans
+  noto-fonts-cjk-serif
+  pciutils
+  file
+  gnumake
+  cudatoolkit
+  octave
+  # ollama
+  # nvidia-container-toolkit
+  # nvidia-docker
   ];
 
   # eed to use sudo nixos-install --option substituters https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store
@@ -222,13 +232,32 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  virtualisation.docker.enable = true;
+  # virtualisation.docker = {
+    # enable = true;
+    # enableOnBoot = true;
+    # enableNvidia = true;
+    # extraOptions = "--default-runtime=nvidia";
+  # };
+
+  virtualisation = {
+    docker = {
+      enable = true;
+      enableNvidia = true;
+    };
+  };
+
+  # virtualisation.docker.enable = true;
   virtualisation.podman.enable = true;
 
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "jan" ];
 
   services.flatpak.enable = true;
+
+  systemd.services.nvidia-control-devices = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.ExecStart = "${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi";
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
