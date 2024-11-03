@@ -138,7 +138,6 @@
   fastfetch
   nerdfonts
   starship
-  cascadia-code
   gh
   vscode
   microsoft-edge
@@ -158,27 +157,46 @@
   openrazer-daemon
   razergenie
   ryujinx
+  cascadia-code
+  noto-fonts
+  noto-fonts-lgc-plus
   noto-fonts-cjk-sans
   noto-fonts-cjk-serif
+  noto-fonts-color-emoji
+  noto-fonts-emoji-blob-bin
+  noto-fonts-monochrome-emoji
+  fira
+  fira-go
+  fira-sans
+  fira-mono
+  fira-math
+  fira-code
+  fira-code-symbols
+  fira-code-nerdfont
   pciutils
   file
   gnumake
   cudatoolkit
-  octave
-  # ollama
-  # nvidia-container-toolkit
-  # nvidia-docker
+  octaveFull
+  processing
+  wineWowPackages.stable
+  winetricks
+  discord
+  libreoffice-qt
+  hunspell
+  # hunspellDicts.af_ZA
+  # hunspellDicts.en_ZA
+  # hunspellDicts.en_GB
+  hunspellDicts.en_GB-ise
+  hunspellDicts.en_US
+  hunspellDicts.nl_NL
+  hunspellDicts.de_DE
+  # hunspellDicts.fr_FR
+  # hunspellDicts.es_ES
+  # hunspellDicts.it_IT
   ];
 
   # eed to use sudo nixos-install --option substituters https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store
-
-  fonts.packages = with pkgs; [
-  noto-fonts
-  fira-code
-  fira-code-symbols
-  cascadia-code
-  (nerdfonts.override { fonts = [ "CascadiaMono" ]; })
-  ];
 
   programs.fish = {
     enable = true;
